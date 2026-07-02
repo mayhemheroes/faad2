@@ -1,0 +1,9 @@
+project: faad2
+# fuzz_config (from fuzz/fuzz_config.c, copied into mayhem/) — exercises
+# NeAACDecAudioSpecificConfig plus the version/capability/error-message getters. Input is
+# [errcode:u8] then a raw mp4 AudioSpecificConfig byte stream.
+target: fuzz_config
+
+cmds:
+  - cmd: /mayhem/fuzz_config
+    libfuzzer: true

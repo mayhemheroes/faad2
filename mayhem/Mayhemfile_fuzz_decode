@@ -1,0 +1,9 @@
+project: faad2
+# fuzz_decode (from fuzz/fuzz_decode.c, copied into mayhem/) — drives the full AAC decode path:
+# NeAACDecInit/Init2 then NeAACDecDecode/Decode2. Input is a WRAPPED byte stream:
+#   [len1:u16-le][len2:u16-le][flags:u8][NeAACDecConfiguration] then len1/len2/len3 AAC payload.
+target: fuzz_decode
+
+cmds:
+  - cmd: /mayhem/fuzz_decode
+    libfuzzer: true
